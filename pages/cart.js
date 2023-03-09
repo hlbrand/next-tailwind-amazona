@@ -15,6 +15,10 @@ export default function CartScreen() {
   const removeItemHandler = (item) => {
     dispatch({ type: "CART_REMOVE_ITEM", payload: item });
   };
+  const updateCartHandle = (item, qty) => {
+    const quantity = Number(qty);
+    dispatch({ type: "CART_ADD_ITEM", payload: { ...item, quantity } });
+  };
 
   return (
     <Layout title="Shopping Cart">
@@ -27,14 +31,14 @@ export default function CartScreen() {
         <div className="grid md:grid-cols-4 md:gap-5">
           <div className="overflow-x-auto md:col-span-3">
             <table className="min-w-full ">
-              <thread className="border-b">
+              <thead className="border-b">
                 <tr>
                   <th className="p-5 text-left">Item</th>
                   <th className="p-5 text-right">Quantity</th>
                   <th className="p-5 text-right">Price</th>
                   <th className="p-5">Action</th>
                 </tr>
-              </thread>
+              </thead>
               <tbody>
                 {cartItems.map((item) => (
                   <tr key={item.slug} className="border-b">
@@ -52,7 +56,18 @@ export default function CartScreen() {
                         </div>
                       </Link>
                     </td>
-                    <td className="p-5 text-right">{item.quantity}</td>
+                    <td className="p-5 text-right">
+                      <select
+                        value={item.quantity}
+                        onChange={(e) => updateCartHandle(item, e.target.value)}
+                      >
+                        {[...Array(item.countInStock).keys()].map((x) => (
+                          <option key={x + 1} value={x + 1}>
+                            {x + 1}
+                          </option>
+                        ))}
+                      </select>
+                    </td>
                     <td className="p-5 text-right">${item.price}</td>
                     <td className="p-5 text-center">
                       <button onClick={() => removeItemHandler(item)}>
