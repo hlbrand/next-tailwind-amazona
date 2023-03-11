@@ -6,7 +6,7 @@ import bcryptjs from "bcryptjs";
 
 export default NextAuth({
   session: {
-    strategry: "jwt",
+    strategy: "jwt",
   },
   callbacks: {
     async jwt({ token, user }) {
@@ -37,7 +37,7 @@ export default NextAuth({
             isAdmin: user.isAdmin,
           };
         }
-        throw new Eror("Invalid email or password");
+        throw new Error("Invalid email or password");
       },
     }),
   ],

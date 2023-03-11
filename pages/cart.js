@@ -16,7 +16,7 @@ function CartScreen() {
   const removeItemHandler = (item) => {
     dispatch({ type: "CART_REMOVE_ITEM", payload: item });
   };
-  const updateCartHandle = (item, qty) => {
+  const updateCartHandler = (item, qty) => {
     const quantity = Number(qty);
     dispatch({ type: "CART_ADD_ITEM", payload: { ...item, quantity } });
   };
@@ -60,7 +60,9 @@ function CartScreen() {
                     <td className="p-5 text-right">
                       <select
                         value={item.quantity}
-                        onChange={(e) => updateCartHandle(item, e.target.value)}
+                        onChange={(e) =>
+                          updateCartHandler(item, e.target.value)
+                        }
                       >
                         {[...Array(item.countInStock).keys()].map((x) => (
                           <option key={x + 1} value={x + 1}>
