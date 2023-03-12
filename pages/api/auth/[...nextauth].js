@@ -1,12 +1,12 @@
-import User from "@/models/User";
-import db from "@/utils/db";
-import CredentialsProvider from "next-auth/providers/credentials";
-import NextAuth from "next-auth/next";
-import bcryptjs from "bcryptjs";
+import User from '@/models/User';
+import db from '@/utils/db';
+import CredentialsProvider from 'next-auth/providers/credentials';
+import NextAuth from 'next-auth/next';
+import bcryptjs from 'bcryptjs';
 
 export default NextAuth({
   session: {
-    strategy: "jwt",
+    strategy: 'jwt',
   },
   callbacks: {
     async jwt({ token, user }) {
@@ -33,11 +33,11 @@ export default NextAuth({
             _id: user._id,
             name: user.name,
             email: user.email,
-            image: "f",
+            image: 'f',
             isAdmin: user.isAdmin,
           };
         }
-        throw new Error("Invalid email or password");
+        throw new Error('Invalid email or password');
       },
     }),
   ],

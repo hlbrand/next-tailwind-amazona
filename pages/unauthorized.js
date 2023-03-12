@@ -1,6 +1,6 @@
-import Layout from "@/components/Layout";
-import { useRouter } from "next/router";
-import React from "react";
+import Layout from '@/components/Layout';
+import { useRouter } from 'next/router';
+import React from 'react';
 
 export default function Unauthorized() {
   const router = useRouter();
