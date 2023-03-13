@@ -53,7 +53,7 @@ export default function Layout({ title, children }) {
             </Link>
             <form
               onSubmit={submitHandler}
-              className="mx-auto  hidden w-full justify-center md:flex"
+              className="mx-auto  hidden w-full justify-center "
             >
               <input
                 onChange={(e) => setQuery(e.target.value)}
@@ -69,7 +69,7 @@ export default function Layout({ title, children }) {
                 <SearchIcon className="h-5 w-5"></SearchIcon>
               </button>
             </form>
-            <div>
+            <div className="flex items-center ">
               <Link href="/cart">
                 <a className="p-2">
                   Cart
@@ -84,7 +84,7 @@ export default function Layout({ title, children }) {
               {status === 'loading' ? (
                 'Loading'
               ) : session?.user ? (
-                <Menu as="div" className="relative inline-block">
+                <Menu as="div" className="inline-block">
                   <Menu.Button className="text-blue-600">
                     {session.user.name}
                   </Menu.Button>
@@ -102,16 +102,7 @@ export default function Layout({ title, children }) {
                         Order History
                       </DropdownLink>
                     </Menu.Item>
-                    {session.user.isAdmin && (
-                      <Menu.Item>
-                        <DropdownLink
-                          className="dropdown-link"
-                          href="/admin/dashboard"
-                        >
-                          Admin Dashboard
-                        </DropdownLink>
-                      </Menu.Item>
-                    )}
+
                     <Menu.Item>
                       <a
                         className="dropdown-link"
