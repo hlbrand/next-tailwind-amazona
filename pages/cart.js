@@ -52,7 +52,7 @@ function CartScreen() {
                   <tr key={item.slug} className="border-b">
                     <td>
                       <Link href={`/product/${item.slug}`}>
-                        <div className="flex items-center">
+                        <a className="flex items-center">
                           <Image
                             src={item.image}
                             alt={item.name}
@@ -61,7 +61,7 @@ function CartScreen() {
                           ></Image>
                           &nbsp;
                           {item.name}
-                        </div>
+                        </a>
                       </Link>
                     </td>
                     <td className="p-5 text-right">

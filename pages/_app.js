@@ -1,6 +1,6 @@
 import '@/styles/globals.css';
-import { StoreProvider } from '@/utils/Store';
 import { SessionProvider, useSession } from 'next-auth/react';
+import { StoreProvider } from '@/utils/Store';
 import { useRouter } from 'next/router';
 
 export default function App({
@@ -33,4 +33,5 @@ function Auth({ children }) {
   if (status === 'loading') {
     return <div>Loading...</div>;
   }
+  return children;
 }
